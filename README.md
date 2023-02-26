@@ -33,7 +33,7 @@ GIF created with [ScreenToGif](https://www.screentogif.com/)
 
 ## Notes
 
-Had trouble trying to figure out the use of ViewModelProviders import including the dependencies for it in the build gradle. Also had difficulty implementing the daily photo stretch feature. Decided to implement through use of Calender classes day of the weeks.
+Had trouble trying to figure out the use of ViewModelProviders import including the dependencies for it in the build gradle. Also had difficulty implementing the daily photo stretch feature. Decided to implement through use of Calender class day of the weeks method.
 
 ## License
 
