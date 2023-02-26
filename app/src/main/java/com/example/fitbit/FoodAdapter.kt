@@ -11,12 +11,10 @@ class FoodAdapter internal constructor(context: Context) : RecyclerView.Adapter<
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var food = emptyList<FoodItem>() // Cached copy of words
-
     inner class FoodViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val foodItemView: TextView = itemView.findViewById(R.id.foodItemtv)
         val numCalView: TextView = itemView.findViewById(R.id.numCaltv)
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
         val itemView = inflater.inflate(R.layout.food_item, parent, false)
         return FoodViewHolder(itemView)
@@ -27,16 +25,12 @@ class FoodAdapter internal constructor(context: Context) : RecyclerView.Adapter<
         holder.foodItemView.text = current.foodname
         holder.numCalView.text = current.calories.toString()
     }
-
     internal fun setFood(food: List<FoodItem>) {
         this.food = food
         notifyDataSetChanged()
     }
-
     fun getWordAtPosition(position: Int): FoodItem {
         return food[position]
     }
-
-
     override fun getItemCount() = food.size
 }

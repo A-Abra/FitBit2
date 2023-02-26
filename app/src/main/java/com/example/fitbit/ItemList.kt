@@ -2,7 +2,6 @@ package com.example.fitbit
 
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
-import kotlinx.coroutines.flow.Flow
 
 class ItemRepository(private val HealthDao: HealthDAO) {
     val allItems: LiveData<List<FoodItem>> = HealthDao.getAll()
