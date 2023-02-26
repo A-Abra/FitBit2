@@ -15,7 +15,7 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_food)
 
-        var imageView: ImageView = findViewById(R.id.imageView)
+        val imageView: ImageView = findViewById(R.id.imageView)
         val calendar = Calendar.getInstance()
         when (calendar.get(Calendar.DAY_OF_WEEK)) {
             Calendar.SUNDAY -> imageView.setImageResource(R.drawable.nov1)
