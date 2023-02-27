@@ -21,17 +21,19 @@ The following **optional** features are implemented:
 - [ ] **Create a UI for tracking averages and trends in metrics**
 - [x] **Improve and customize the user interface through styling and coloring**
 - [x] **Implement orientation responsivity**
-- [ ] **Add a daily photo feature**
+- [x] **Add a daily photo feature**
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/A-Abra/FitBit/blob/master/FitBit.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with [ScreenToGif](https://www.screentogif.com/)
 
 ## Notes
 
-Had trouble trying to figure out the use of ViewModelProviders import. Also had difficulty implementing the daily photo stretch feature.
+Had trouble trying to figure out the use of ViewModelProviders import including the dependencies for it in the build gradle. Also had difficulty implementing the daily photo stretch feature. Decided to implement through use of Calender class day of the weeks method.
 
 ## License
 
