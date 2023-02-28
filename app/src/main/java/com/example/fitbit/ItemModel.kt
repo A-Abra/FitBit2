@@ -19,8 +19,8 @@ class ItemViewModel(application: Application): AndroidViewModel(application) {
     val allItems: LiveData<List<FoodItem>>
 
     init {
-        val HealthDao = AppDatabase.getDatabase(application, scope).healthDao()
-        repository = ItemRepository(HealthDao)
+        val healthDao = AppDatabase.getDatabase(application, scope).foodDao()
+        repository = ItemRepository(healthDao)
         allItems = repository.allItems
     }
 

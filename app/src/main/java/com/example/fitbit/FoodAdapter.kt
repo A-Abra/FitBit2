@@ -1,5 +1,6 @@
 package com.example.fitbit
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 class FoodAdapter internal constructor(context: Context) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private var food = emptyList<FoodItem>() // Cached copy of words
+    private var food = mutableListOf<FoodItem>()
     inner class FoodViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val foodItemView: TextView = itemView.findViewById(R.id.foodItemtv)
         val numCalView: TextView = itemView.findViewById(R.id.numCaltv)
@@ -25,12 +26,10 @@ class FoodAdapter internal constructor(context: Context) : RecyclerView.Adapter<
         holder.foodItemView.text = current.foodname
         holder.numCalView.text = current.calories.toString()
     }
+    @SuppressLint("NotifyDataSetChanged")
     internal fun setFood(food: List<FoodItem>) {
-        this.food = food
+        this.food = food as MutableList<FoodItem>
         notifyDataSetChanged()
-    }
-    fun getWordAtPosition(position: Int): FoodItem {
-        return food[position]
     }
     override fun getItemCount() = food.size
 }

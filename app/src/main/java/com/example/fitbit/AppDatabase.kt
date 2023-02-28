@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 @Database(entities = [FoodItem::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun healthDao(): HealthDAO
+    abstract fun foodDao(): FoodDAO
     companion object {
         @Volatile
         private var INSTANCE: AppDatabase? = null
@@ -31,7 +31,7 @@ abstract class AppDatabase : RoomDatabase() {
         }
         private class WordDatabaseCallback(
             private val scope: CoroutineScope
-        ) : RoomDatabase.Callback() {
+        ) : Callback() {
             override fun onOpen(db: SupportSQLiteDatabase) {
                 super.onOpen(db)
 

@@ -6,7 +6,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 @Dao
-interface HealthDAO {
+interface FoodDAO {
     @Query("SELECT * FROM HealthData")
     fun getAll(): LiveData<List<FoodItem>>
 

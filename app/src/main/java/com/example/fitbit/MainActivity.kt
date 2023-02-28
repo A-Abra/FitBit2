@@ -45,10 +45,8 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, intentData)
         if (requestCode == newFoodActivityRequestCode && resultCode == Activity.RESULT_OK) {
             intentData?.let { data ->
-                // Add new food name into database
                 val food = FoodItem(0,data.getStringExtra(DetailActivity.EXTRA_FOOD), data.getStringExtra(DetailActivity.EXTRA_CALORIES)?.toInt())
                 itemViewModel.insert(food)
-                // Add new calories into database
             }
         } else {
             Toast.makeText(
