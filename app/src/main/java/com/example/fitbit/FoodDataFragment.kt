@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 
 class FoodDataFragment : Fragment() {
+    private val newFoodActivityRequestCode = 1
     private val fooditems = mutableListOf<DisplayItem>()
 
     override fun onCreateView(
@@ -28,6 +29,11 @@ class FoodDataFragment : Fragment() {
         val tvHighestCal = view.findViewById<TextView>(R.id.tvHigh)
         val tvLowestCal = view.findViewById<TextView>(R.id.tvLow)
         val tvAverageCal = view.findViewById<TextView>(R.id.tvAverage)
+
+        view?.findViewById<Button>(R.id.btnAdd2)?.setOnClickListener{
+            val intent = Intent(activity, DetailActivity::class.java)
+            startActivityForResult(intent, newFoodActivityRequestCode)
+        }
 
         lifecycleScope.launch {
             (activity?.application as FoodApplication).db.healthDao().getAll().collect { databaseList ->
