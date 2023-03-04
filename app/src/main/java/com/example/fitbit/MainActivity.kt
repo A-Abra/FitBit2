@@ -8,52 +8,41 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-    private val newFoodActivityRequestCode = 1
-    private lateinit var itemViewModel: ItemViewModel
-    private var actionEvent: TextView? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        actionEvent = findViewById(R.id.actionEvent)
+        setContentView(R.layout.menu)
 
-        val recyclerView = findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.rvFood)
-        val adapter = FoodAdapter(this)
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        val fragmentManager: FragmentManager = supportFragmentManager
 
-        itemViewModel = ViewModelProviders.of(this).get(ItemViewModel::class.java)
+        findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener {
+                item ->
+            var fragmentToShow: Fragment? = null
 
-        itemViewModel.allItems.observe(this, Observer { food ->
-            food?.let { adapter.setFood(it) }
-        })
-
-        findViewById<Button>(R.id.btnAdd).setOnClickListener{
-            val intent = Intent(this, DetailActivity::class.java)
-            startActivityForResult(intent, newFoodActivityRequestCode)
-        }
-    }
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-    }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
-        super.onActivityResult(requestCode, resultCode, intentData)
-        if (requestCode == newFoodActivityRequestCode && resultCode == Activity.RESULT_OK) {
-            intentData?.let { data ->
-                val food = FoodItem(0,data.getStringExtra(DetailActivity.EXTRA_FOOD), data.getStringExtra(DetailActivity.EXTRA_CALORIES)?.toInt())
-                itemViewModel.insert(food)
+            when(item.itemId){
+                R.id.nav_log -> {
+                    // Navigate to list of foods entered
+                    fragmentToShow = FoodLogFragment()
+                }
+                R.id.nav_summary -> {
+                    // Navigate to Food data summary
+                    fragmentToShow = FoodDataFragment()
+                }
             }
-        } else {
-            Toast.makeText(
-                applicationContext,
-                "Not saved",
-                Toast.LENGTH_LONG
-            ).show()
+            if (fragmentToShow != null){
+                fragmentManager.beginTransaction().replace(R.id.flContainer,fragmentToShow).commit()
+            }
+            true
         }
+        findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = R.id.nav_log
     }
 }

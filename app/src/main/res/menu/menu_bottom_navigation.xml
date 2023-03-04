@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_log"
+        android:enabled="true"
+        android:icon="@drawable/fastfood_24"
+        android:title="Log" />
+    <item
+        android:id="@+id/nav_summary"
+        android:enabled="true"
+        android:icon="@drawable/summarize_24"
+        android:title="Summary" />
+</menu>

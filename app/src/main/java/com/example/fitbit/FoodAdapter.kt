@@ -1,35 +1,36 @@
 package com.example.fitbit
 
-import android.annotation.SuppressLint
 import android.content.Context
+import android.view.Display
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class FoodAdapter internal constructor(context: Context) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
+const val ARTICLE_EXTRA = "FOOD_EXTRA"
+private const val TAG = "FoodAdapter"
 
-    private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private var food = mutableListOf<FoodItem>()
-    inner class FoodViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val foodItemView: TextView = itemView.findViewById(R.id.foodItemtv)
-        val numCalView: TextView = itemView.findViewById(R.id.numCaltv)
+class FoodAdapter(private val context: Context, private val foodItems: List<DisplayItem>) :
+    RecyclerView.Adapter<FoodAdapter.ViewHolder>(){
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(context).inflate(R.layout.food_item, parent, false)
+        return ViewHolder(view)
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
-        val itemView = inflater.inflate(R.layout.food_item, parent, false)
-        return FoodViewHolder(itemView)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val fooditem = foodItems[position]
+        holder.bind(fooditem)
     }
+    override fun getItemCount() = foodItems.size
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
-    override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
-        val current = food[position]
-        holder.foodItemView.text = current.foodname
-        holder.numCalView.text = current.calories.toString()
+        private val foodnameView = itemView.findViewById<TextView>(R.id.foodItemtv)
+        private val foodcalView = itemView.findViewById<TextView>(R.id.numCaltv)
+
+        // helper method to help set up the onBindViewHolder method
+        fun bind(fooditem: DisplayItem) {
+            foodnameView.text = fooditem.foodName
+            foodcalView.text = fooditem.foodCal.toString()
+        }
     }
-    @SuppressLint("NotifyDataSetChanged")
-    internal fun setFood(food: List<FoodItem>) {
-        this.food = food as MutableList<FoodItem>
-        notifyDataSetChanged()
-    }
-    override fun getItemCount() = food.size
 }

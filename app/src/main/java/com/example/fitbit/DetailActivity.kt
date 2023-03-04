@@ -31,7 +31,8 @@ class DetailActivity : AppCompatActivity() {
         val button = findViewById<Button>(R.id.btnAddFood)
         button.setOnClickListener {
             val replyIntent = Intent()
-            if (TextUtils.isEmpty(findViewById<EditText>(R.id.foodInput).text)) {
+            if (TextUtils.isEmpty(findViewById<EditText>(R.id.foodInput).text)
+                && TextUtils.isEmpty(findViewById<EditText>(R.id.calInput).text) ) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
             } else {
                 val food = findViewById<EditText>(R.id.foodInput).text.toString()

@@ -3,38 +3,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:gravity = "center"
     android:layout_height="match_parent"
     android:background="#75757575"
-    tools:context=".MainActivity"
-    android:orientation = "vertical">
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
     <TextView
-        android:id = "@+id/actionEvent"
-        android:textSize = "40sp"
-        android:layout_marginTop = "30dp"
-        android:layout_width = "wrap_content"
-        android:layout_height = "match_parent"
+        android:id="@+id/actionEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:textSize="40sp"
         tools:ignore="MissingConstraints" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvFood"
+    <RelativeLayout
+        android:id="@+id/rlContainer"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/btnAdd"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btnAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="Add Food Item"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFood"
+            android:layout_width="409dp"
+            android:layout_height="674dp"
+            android:layout_above="@+id/btnAdd"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="5dp"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="1dp" />
+
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="105dp"
+            android:layout_marginEnd="105dp"
+            android:layout_marginBottom="15dp"
+            android:text="Add Food Item"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent" />
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

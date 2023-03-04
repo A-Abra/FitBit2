@@ -9,37 +9,27 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = [FoodItem::class], version = 2, exportSchema = false)
+@Database(entities = [FoodItem::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun foodDao(): FoodDAO
+
+    abstract fun healthDao(): FoodDAO
+
+
     companion object {
+
         @Volatile
         private var INSTANCE: AppDatabase? = null
-        fun getDatabase(context: Context, scope: CoroutineScope): AppDatabase {
-            return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    AppDatabase::class.java,
-                    "app_database"
-                )
-                    .fallbackToDestructiveMigration()
-                    .addCallback(WordDatabaseCallback(scope))
-                    .build()
-                INSTANCE = instance
-                instance
-            }
-        }
-        private class WordDatabaseCallback(
-            private val scope: CoroutineScope
-        ) : Callback() {
-            override fun onOpen(db: SupportSQLiteDatabase) {
-                super.onOpen(db)
 
-                INSTANCE?.let {
-                    scope.launch(Dispatchers.IO) {
-                    }
-                }
+        fun getInstance(context: Context): AppDatabase =
+            INSTANCE ?: synchronized(this) {
+                INSTANCE ?: buildDatabase(context).also { INSTANCE = it }
             }
-        }
+
+        private fun buildDatabase(context: Context) =
+            Room.databaseBuilder(
+                context.applicationContext,
+                AppDatabase::class.java, "Food-db"
+            ).build()
     }
+
 }
