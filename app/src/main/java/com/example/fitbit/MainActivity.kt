@@ -1,6 +1,7 @@
 package com.example.fitbit
 
 import android.app.Activity
+import android.app.NotificationChannel
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle

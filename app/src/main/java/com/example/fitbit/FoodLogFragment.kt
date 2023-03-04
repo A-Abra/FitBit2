@@ -28,8 +28,6 @@ class FoodLogFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.activity_main, container, false)
     }
 
@@ -58,7 +56,6 @@ class FoodLogFragment : Fragment() {
                     )
                 }.also { mappedList ->
                     fooditems.clear()
-                    //for (food in mappedList){
                     Log.i("FoodFragment", mappedList.toString())
                     fooditems.addAll(mappedList)
                     adapter.notifyDataSetChanged()
@@ -93,6 +90,6 @@ class FoodLogFragment : Fragment() {
     }
 
     companion object {
-        const val TAG = "FoodFragment"
+        const val TAG = "FoodLogFragment"
     }
 }

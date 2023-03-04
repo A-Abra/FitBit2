@@ -15,6 +15,8 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_food)
 
+        //notifyChannel();
+
         val imageView: ImageView = findViewById(R.id.imageView)
         val calendar = Calendar.getInstance()
         when (calendar.get(Calendar.DAY_OF_WEEK)) {
@@ -49,4 +51,8 @@ class DetailActivity : AppCompatActivity() {
         const val EXTRA_FOOD = "FOOD_EXTRA"
         const val EXTRA_CALORIES = "CALORIES_EXTRA"
     }
+
+//    private void notifyChannel() {
+//        return;
+//    }
 }
