@@ -1,39 +1,36 @@
-# Android Project 5 - *FitBitFood*
+# Android Project 6 - *FitBitFood++*
 
 Submitted by: **Anosh Abraham**
 
-**FitBitFood** is a health metrics app that allows users to track food consumed.
+**FitBitFood++** is a health metrics app that allows users to track ... [Nutrition/Calories] 
 
-Time spent: **7** hours spent in total
+Time spent: **8** hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed:
 
-- [x] **At least one health metric is tracked (based on user input)**
-  - Chosen metric(s): `Nutrition/Calories`
-- [x] **There is a "create entry" UI that prompts users to make their daily entry**
-- [x] **New entries are saved in a database and then updated in the RecyclerView**
-- [x] **On application restart, previously entered entries are preserved (i.e., are *persistent*)**
- 
+- [x] **Use at least 2 Fragments**
+- [x] **Create a new dashboard fragment where users can see a summary of their entered data**
+- [x] **Use one of the Navigation UI Views (BottomNavigation, Drawer Layout, Top Bar) to move between the fragments**
+
 The following **optional** features are implemented:
 
-- [ ] **Create a UI for tracking averages and trends in metrics**
-- [x] **Improve and customize the user interface through styling and coloring**
-- [x] **Implement orientation responsivity**
-- [x] **Add a daily photo feature**
+- [ ] **Add a more advanced UI (e.g: Graphing) for tracking trends in metrics**
+- [x] **Implement daily notifications to prompt users to fill in their data**
+
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://github.com/A-Abra/FitBit/blob/master/FitBit.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/A-Abra/FitBit2/blob/master/FitBit2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [ScreenToGif](https://www.screentogif.com/)
 
 ## Notes
 
-Had trouble trying to figure out the use of ViewModelProviders import including the dependencies for it in the build gradle. Also had difficulty implementing the daily photo stretch feature. Decided to implement through use of Calender class day of the weeks method.
+Had to implement/delete some classes, using different imports from before when I worked with FitBit1. Also had issues with notification stretch feature displaying but now fixed.
 
 ## License
 
