@@ -1,6 +1,6 @@
 package com.example.fitbit
 
-import android.app.Activity
+import android.app.*
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
@@ -10,12 +10,11 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
+
 class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_food)
-
-        //notifyChannel();
 
         val imageView: ImageView = findViewById(R.id.imageView)
         val calendar = Calendar.getInstance()
@@ -51,8 +50,4 @@ class DetailActivity : AppCompatActivity() {
         const val EXTRA_FOOD = "FOOD_EXTRA"
         const val EXTRA_CALORIES = "CALORIES_EXTRA"
     }
-
-//    private void notifyChannel() {
-//        return;
-//    }
 }
