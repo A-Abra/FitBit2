@@ -2,7 +2,7 @@
 
 Submitted by: **Anosh Abraham**
 
-**FitBitFood++** is a health metrics app that allows users to track ... [Nutrition/Calories] 
+**FitBitFood++** is a health metrics app that allows users to track [Nutrition/Calories] 
 
 Time spent: **8** hours spent in total
 
